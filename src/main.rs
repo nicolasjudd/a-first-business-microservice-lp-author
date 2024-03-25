@@ -20,7 +20,7 @@ async fn handle_request(req: Request<Body>) -> Result<Response<Body>, anyhow::Er
         //
         //     Ok(Response::new(Body::from(rate)))
         // }
-        (&Method::POST, "/find_rate_old") => {
+        (&Method::POST, "/find_rate") => {
             let post_body = hyper::body::to_bytes(req.into_body()).await?;
             let mut rate = None; // default is 404
 
