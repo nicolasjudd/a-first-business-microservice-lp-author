@@ -59,9 +59,9 @@ jobs:
           echo -e "Execution Fail!"
           exit 1
         fi
-        resp=$(curl http://localhost:8001/find_rate -X POST -d "12345")
+        curl http://localhost:8001/find_rate -X POST -d "12345"
         echo "$resp"
-        if !$resp; then
+        if ! curl http://localhost:8001/find_rate -X POST -d "12345" | grep "404" >dev/null; then
           echo -e "Execution Success!"
         else
           echo -e "Execution Fail!"
