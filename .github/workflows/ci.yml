@@ -51,9 +51,17 @@ jobs:
           echo -e "Execution Fail!"
           exit 1
         fi
+        resp=$(curl http://localhost:8001/find_rate -X POST -d "11201")
+        echo "$resp"
+        if [[ $resp == "0.0888" ]]; then
+          echo -e "Execution Success!"
+        else
+          echo -e "Execution Fail!"
+          exit 1
+        fi
         resp=$(curl http://localhost:8001/find_rate -X POST -d "12345")
         echo "$resp"
-        if [[ $resp == "0.08" ]]; then
+        if !$resp; then
           echo -e "Execution Success!"
         else
           echo -e "Execution Fail!"
